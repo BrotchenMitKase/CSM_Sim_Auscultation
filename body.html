@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSM – Interaktywny model</title>
+<style>
+  body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 30px;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .hotspot-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hotspot-container img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 40px;
+    border: solid 5px black;
+  }
+
+  /* 🔴 Czerwone punkty */
+  .hotspot.red {
+    background-color: rgba(255, 0, 0, 0.03);
+  }
+  .hotspot.red:hover {
+    background-color: rgba(255, 80, 80, 0.9);
+    transform: scale(1.5);
+  }
+
+  /* 🔵 Niebieskie punkty */
+  .hotspot.blue {
+    background-color: rgba(0, 0, 255, 0.03);
+  }
+  .hotspot.blue:hover {
+    background-color: rgba(80, 80, 255, 0.9);
+    transform: scale(1.5);
+  }
+
+  /* Wspólne właściwości punktów */
+  .hotspot {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.75s, background-color 0.75s;
+  }
+
+  /* Tooltip w środku hotspotu */
+  .tooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f5f5f5;
+    color: #000;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    font-size: 1rem;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .hotspot:hover .tooltip {
+    opacity: 1;
+  }
+
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+	font-size: 18px;
+    padding: 12px 40px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .back-btn:hover {
+    background: #a71d2a;
+  }
+</style>
+</head>
+<body>
+
+<button class="back-btn" onclick="window.location.href='index.html'">← Back</button>
+
+<div class="container">
+  <div class="hotspot-container">
+    <img src="CIALO.jpeg" alt="Obraz interaktywny">
+
+    <!-- 🔴 SERCE -->
+    <div class="hotspot red" style="top: 32.5%; left: 38%;" data-organ="heart" data-sound="H1.mp3">
+      <div class="tooltip">H1</div>
+    </div>
+    <div class="hotspot red" style="top: 32.5%; left: 58%;" data-organ="heart" data-sound="H2.mp3">
+      <div class="tooltip">H2</div>
+    </div>
+    <div class="hotspot red" style="top: 39.5%; left: 60%;" data-organ="heart" data-sound="H3.mp3">
+      <div class="tooltip">H3</div>
+    </div>
+    <div class="hotspot red" style="top: 46.5%; left: 61%;" data-organ="heart" data-sound="H4.mp3">
+      <div class="tooltip">H4</div>
+    </div>
+    <div class="hotspot red" style="top: 49%; left: 41%;" data-organ="heart" data-sound="H5.mp3">
+      <div class="tooltip">H5</div>
+    </div>
+    <div class="hotspot red" style="top: 49%; left: 55%;" data-organ="heart" data-sound="H5.mp3">
+      <div class="tooltip">H5</div>
+    </div>
+    <div class="hotspot red" style="top: 54.5%; left: 66%;" data-organ="heart" data-sound="H6.mp3">
+      <div class="tooltip">H6</div>
+    </div>
+
+    <!-- 🔵 PRAWE PŁUCO -->
+    <div class="hotspot blue" style="top: 24.5%; left: 32%;" data-organ="right_lung" data-sound="L1.mp3">
+      <div class="tooltip">L1R</div>
+    </div>
+    <div class="hotspot blue" style="top: 32%; left: 30%;" data-organ="right_lung" data-sound="L1.mp3">
+      <div class="tooltip">L1R</div>
+    </div>
+    <div class="hotspot blue" style="top: 39%; left: 27%;" data-organ="right_lung" data-sound="L1.mp3">
+      <div class="tooltip">L1R</div>
+    </div>
+	<div class="hotspot blue" style="top: 47%; left: 25%;" data-organ="right_lung" data-sound="L1.mp3">
+      <div class="tooltip">L1R</div>
+    </div>
+    <div class="hotspot blue" style="top: 55%; left: 23%;" data-organ="right_lung" data-sound="L2.mp3">
+      <div class="tooltip">L2R</div>
+    </div>
+    <div class="hotspot blue" style="top: 62%; left: 22%;" data-organ="right_lung" data-sound="L2.mp3">
+      <div class="tooltip">L2R</div>
+    </div>
+    <div class="hotspot blue" style="top: 67%; left: 19%;" data-organ="right_lung" data-sound="L3.mp3">
+      <div class="tooltip">L3R</div>
+    </div>
+    <div class="hotspot blue" style="top: 71%; left: 14%;" data-organ="right_lung" data-sound="L3.mp3">
+      <div class="tooltip">L3R</div>
+    </div>
+
+    <!-- 🔵 LEWE PŁUCO -->
+    <div class="hotspot blue" style="top: 24.5%; left: 62.5%;" data-organ="left_lung" data-sound="L1.mp3">
+      <div class="tooltip">L1L</div>
+    </div>
+    <div class="hotspot blue" style="top: 32%; left: 65%;" data-organ="left_lung" data-sound="L1.mp3">
+      <div class="tooltip">L1L</div>
+    </div>
+    <div class="hotspot blue" style="top: 39%; left: 67%;" data-organ="left_lung" data-sound="L1.mp3">
+      <div class="tooltip">L1L</div>
+    </div>
+    <div class="hotspot blue" style="top: 47%; left: 70%;" data-organ="left_lung" data-sound="L1.mp3">
+      <div class="tooltip">L1L</div>
+    </div>
+    <div class="hotspot blue" style="top: 55%; left: 72%;" data-organ="left_lung" data-sound="L2.mp3">
+      <div class="tooltip">L2L</div>
+    </div>
+    <div class="hotspot blue" style="top: 62%; left: 73%;" data-organ="left_lung" data-sound="L2.mp3">
+      <div class="tooltip">L2L</div>
+    </div>
+    <div class="hotspot blue" style="top: 67%; left: 76%;" data-organ="left_lung" data-sound="L3.mp3">
+      <div class="tooltip">L3L</div>
+    </div>
+    <div class="hotspot blue" style="top: 71%; left: 81%;" data-organ="left_lung" data-sound="L3.mp3">
+      <div class="tooltip">L3L</div>
+    </div>
+  </div>
+</div>
+
+<audio id="audio-player"></audio>
+
+<script>
+  // pobranie wyborów z adresu URL
+  const params = new URLSearchParams(window.location.search);
+  const serce = params.get('serce') || '1_Normal';
+  const plucoLewe = params.get('pluco_lewe') || '1_Normal_Lung';
+  const plucoPrawe = params.get('pluco_prawe') || '1_Normal_Lung';
+
+  const audioPlayer = document.getElementById('audio-player');
+  const hotspots = document.querySelectorAll('.hotspot');
+
+  hotspots.forEach(spot => {
+    spot.addEventListener('mouseenter', () => {
+      const soundNum = spot.dataset.sound.replace('.mp3', '');
+      const organ = spot.dataset.organ;
+      let soundPath = '';
+
+      if (organ === 'heart') {
+        soundPath = `serce/${serce}/${soundNum}.mp3`;
+      } 
+      else if (organ === 'left_lung') {
+        soundPath = `pluca/${plucoLewe}/${soundNum}.mp3`;
+      } 
+      else if (organ === 'right_lung') {
+        soundPath = `pluca/${plucoPrawe}/${soundNum}.mp3`;
+      }
+
+      audioPlayer.src = soundPath;
+	  audioPlayer.loop = true;
+      audioPlayer.currentTime = 0;
+      audioPlayer.play();
+    });
+
+    spot.addEventListener('mouseleave', () => {
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
+	  audioPlayer.loop = false;
+    });
+  });
+</script>
+
+</body>
+</html>

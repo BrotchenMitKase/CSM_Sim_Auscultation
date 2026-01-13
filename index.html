@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSM - Wybór przypadku</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+
+  button {
+    margin-top: 30px;
+    padding: 12px 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Wybierz przypadek</h1>
+
+  <label for="serce">Serce:</label>
+  <select id="serce">
+    <option value="1_Normal">1. Normal / Norma </option>
+    <option value="4_Mitral_Stenosis">4. Mitral Stenosis / Stenoza Mitralna</option>
+    <option value="5_Holosystolic_Murmur">5. Holosystolic Murmur / Szmer Skurczowy (Holosystoliczny)</option>
+    <option value="7_S3_Gallop">7. S3 Gallop / S3 Galop</option>
+  </select>
+
+  <label for="pluco_lewe">Lewe płuco:</label>
+  <select id="pluco_lewe">
+    <option value="1_Normal_Lung">1. Normal Lung / Norma</option>
+    <option value="3_Wheezes">3. Wheezes / Świsty</option>
+    <option value="5_Fine_Crackle">5. Fine Crackle / Trzeszczenia - drobnobańkowe</option>
+    <option value="6_Coarse_Crackle">6. Coarse Cracle / Trzeszczenia - grubobańkowe</option>
+    <option value="7_Ronchi">7. Ronchi / Rzężenia</option>
+    <option value="12_Pulmonary_Edema">12. Pulmonary Edema / Obrzęk Płuc</option>
+  </select>
+
+  <label for="pluco_prawe">Prawe płuco:</label>
+  <select id="pluco_prawe">
+    <option value="1_Normal_Lung">1. Normal Lung / Norma</option>
+    <option value="3_Wheezes">3. Wheezes / Świsty</option>
+    <option value="5_Fine_Crackle">5. Fine Crackle / Trzeszczenia - drobnobańkowe</option>
+    <option value="6_Coarse_Crackle">6. Coarse Cracle / Trzeszczenia - grubobańkowe</option>
+    <option value="7_Ronchi">7. Ronchi / Rzężenia</option>
+    <option value="12_Pulmonary_Edema">12. Pulmonary Edema / Obrzęk Płuc</option>
+  </select>
+
+  <button onclick="goToBody()">Zatwierdź</button>
+</div>
+
+<script>
+function goToBody() {
+  const serce = document.getElementById('serce').value;
+  const plucoLewe = document.getElementById('pluco_lewe').value;
+  const plucoPrawe = document.getElementById('pluco_prawe').value;
+
+  // przekazanie 3 parametrów do body.html
+  window.location.href = `body.html?serce=${serce}&pluco_lewe=${plucoLewe}&pluco_prawe=${plucoPrawe}`;
+}
+</script>
+
+</body>
+</html>
